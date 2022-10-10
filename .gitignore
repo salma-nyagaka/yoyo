@@ -1,0 +1,5 @@
+.idea
+.env
+*.pyc
+old_jobs
+venv/
