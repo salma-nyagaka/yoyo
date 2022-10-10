@@ -4,60 +4,45 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 from django.conf import settings
-
-from .helpers.constants import SUCCESS_MESSAGE, FORBIDDEN_MESSAGE
-from .helpers.validate_params import validate_params
-from .helpers.perform_computations import perform_computations
-from ...helpers.renderers import RequestJSONRenderer
+from urllib import parse
+from .utils import perform_computations
 
 
 class WeatherDataRetrieveApiView(generics.RetrieveAPIView):
-    """ Class to fetch weather data"""
-    renderer_classes = (RequestJSONRenderer,)
+    """Class to fetch weather data"""
 
     def get(self, request, city_name):
-        """ Function to fetch weather data from
+        """Function to fetch weather data from
         external weather API"""
 
-        # url = settings.API_URL
-        # params = request.query_params
-        # key = settings.API_KEY
+        key = "0873153d0367435db6a113510221010"
+        api_url = request.build_absolute_uri()
+        city = api_url.split("/")
+        params = request.query_params
+        days = params["days"]
 
-        # if key:
-        #     # Convert QueryDict to Python Dict
-        #     params_dict = params.dict()
+        # weather api url
+        url = "http://api.weatherapi.com/v1/forecast.json"
 
-        #     # Insert values to params
-        #     params_dict['key'] = key
-        #     params_dict['q'] = city_name
-        #     validate_params(params_dict)
-
-        #     data = requests.get(url, params=params_dict)
-        #     response_data = json.loads(data.content)
-
-        #     # Check if the response is successful
-        #     # otherwise return the error from the external API
-        #     if data.status_code == 200:
-        #         # Get the computed data
-        #         maximum, minimum, average, median = perform_computations(
-        #             response_data)
-
-        #         computated_data = {
-        #             "maximum": maximum,
-        #             "minimum": minimum,
-        #             "average": average,
-        #             "median": median
-        #         }
-        #         return_message = {
-        #             "message": SUCCESS_MESSAGE.format("Weather data fetched"),
-        #             "data": computated_data
-        #         }
-        #         return Response(return_message, status=status.HTTP_200_OK)
-        #     return_message = {
-        #         "message": response_data['error']
-        #     }
-        #     return Response(return_message, status=status.HTTP_400_BAD_REQUEST)
-        return_message = {
-            "message": "FORBIDDEN_MESSAGE"
+        # parameters to pass to the weather api url
+        weather_params = {
+            "days": days,
+            "q": city,
+            "key": key,
+            "aqi": "no",
+            "alerts": "no",
         }
-        return Response(return_message, status=status.HTTP_403_FORBIDDEN)
+
+        weather_data = requests.get(url, weather_params)
+
+        converted_data = json.loads(weather_data.content)
+
+        # if response is successful, then proceed with the computations
+        if weather_data.status_code == 200:
+            response_data = perform_computations(converted_data)
+            return_message = response_data
+            return Response(return_message, status=status.HTTP_200_OK)
+
+        # if response is unsuccessful, return the error from the api call
+        else:
+            return Response(converted_data, status=status.HTTP_400_BAD_REQUEST)
