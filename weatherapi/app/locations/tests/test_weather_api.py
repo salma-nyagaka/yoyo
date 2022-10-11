@@ -15,10 +15,9 @@ class TestWeatherApi(BaseTestCase):
         response = self.client.get(self.locations_api_url, self.params, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    
     def test_wrong_key(self):
-        """ Test to check for response
+        """Test to check for response
         when wrong key is passed"""
-        settings.API_KEY = 'nokey'
+        settings.API_KEY = "nokey"
         response = self.client.get(self.locations_api_url, self.params, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
