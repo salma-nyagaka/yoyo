@@ -6,7 +6,6 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.conf import settings
 
-
 from .utils import perform_computations
 
 
@@ -51,4 +50,4 @@ class WeatherDataRetrieveApiView(generics.RetrieveAPIView):
                 return Response(converted_data, status=status.HTTP_400_BAD_REQUEST)
 
         except Exception as e:
-            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
