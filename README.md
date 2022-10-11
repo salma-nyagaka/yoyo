@@ -1,8 +1,7 @@
-[![Build Status](https://app.travis-ci.com/salma-nyagaka/alocaiapp.svg?branch=develop)](https://app.travis-ci.com/salma-nyagaka/alocaiapp)
-[![Coverage Status](https://coveralls.io/repos/github/salma-nyagaka/alocaiapp/badge.svg?branch=develop)](https://coveralls.io/github/salma-nyagaka/alocaiapp?branch=develop)
+[![Build Status](https://app.travis-ci.com/salma-nyagaka/yoyo.svg?branch=develop)](https://app.travis-ci.com/salma-nyagaka/yoyo)
+[![Coverage Status](https://coveralls.io/repos/github/salma-nyagaka/yoyo/badge.svg?branch=develop)](https://coveralls.io/github/salma-nyagaka/yoyo?branch=develop)
 
 ### yoyo
-
 #### Description
 As an API user I want to get the minimum, maximum, average and median temperature for a
 given city and period of time.
