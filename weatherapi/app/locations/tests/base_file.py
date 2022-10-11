@@ -15,7 +15,6 @@ class BaseTestCase(TestCase):
         self.locations_api_url = reverse("locations:weather-api", args=["Nairobi"])
 
         self.params = {
-            "key": "0873153d0367435db6a113510221010",
             "q": "Nairobi",
             "days": "3",
         }
