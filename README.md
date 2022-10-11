@@ -8,11 +8,11 @@ As an API user I want to get the minimum, maximum, average and median temperatur
 given city and period of time.
 
 #### Development set up
--   Check that python 3.10.0 is installed:
+-   Check that python 3.9.7 is installed:
 
     ```
     python --version
-    >> Python 3.10.0
+    >> Python 3.9.7
     ```
 
 -   Clone the repo and:
