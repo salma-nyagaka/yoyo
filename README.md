@@ -14,16 +14,28 @@ given city and period of time.
     >> Python 3.9.7
     ```
 
--   Clone the repo and:
+-   Clone the repo:
 
     ```
     git clone https://github.com/salma-nyagaka/yoyo.git
     ```
 
--   Change directories into the project folder by running:
+-   Access the project folder by running:
 
     ```
     cd weatherapi
+    ```
+
+-   Install **pip** first
+
+    ```
+    sudo apt-get install python3-pip
+    ```
+
+-   Then install **virtualenv** using pip3
+
+    ```
+     sudo pip3 install virtualenv 
     ```
 
 -   Create a virtual environment and activate it:
@@ -45,12 +57,12 @@ given city and period of time.
     pytest
     ```
 
--   Start the server
+-   Start the server to access the endpoint below
     ```
     python manage.py runserver
     ```
 
- #### Endpoints
+ #### Endpoint
 | REQUEST | DESCRIPTION  | URL  |
 | :-----: | :-: | :-: |
 | GET | Get weather api data |  {{BASE_URL}}}}/api/locations/{{city}}/?days={{days}} |
