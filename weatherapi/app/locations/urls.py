@@ -1,6 +1,7 @@
 from django.urls import include, path
 from .views import WeatherDataRetrieveApiView
 
+app_name = "locations"
 
 urlpatterns = [
     path(
