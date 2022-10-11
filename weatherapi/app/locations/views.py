@@ -16,9 +16,6 @@ class WeatherDataRetrieveApiView(generics.RetrieveAPIView):
         """Function to fetch weather data from
         external weather API"""
         try:
-            api_url = request.build_absolute_uri()
-            city = api_url.split("/")
-
             # get number of days from days from params
             # assign 1 if days has not been passed in params
             days = request.GET.get("days", 1)
@@ -29,14 +26,14 @@ class WeatherDataRetrieveApiView(generics.RetrieveAPIView):
             # parameters to pass to the weather api url
             weather_params = {
                 "days": days,
-                "q": city,
-                "key": os.getenv("API_KEY"),
+                "q": city_name.capitalize(),
+                "key": settings.API_KEY,
                 "aqi": "no",
                 "alerts": "no",
             }
 
+            # get data from weather api
             weather_data = requests.get(url, weather_params)
-
             converted_data = json.loads(weather_data.content)
 
             # if response is successful, then proceed with the computations
