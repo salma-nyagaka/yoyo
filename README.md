@@ -1,3 +1,6 @@
+[![Build Status](https://app.travis-ci.com/salma-nyagaka/alocaiapp.svg?branch=develop)](https://app.travis-ci.com/salma-nyagaka/alocaiapp)
+[![Coverage Status](https://coveralls.io/repos/github/salma-nyagaka/alocaiapp/badge.svg?branch=develop)](https://coveralls.io/github/salma-nyagaka/alocaiapp?branch=develop)
+
 ### yoyo
 
 #### Description
@@ -47,3 +50,8 @@ given city and period of time.
     ```
     python manage.py runserver
     ```
+
+ #### Endpoints
+| REQUEST | DESCRIPTION  | URL  |
+| :-----: | :-: | :-: |
+| GET | Get weather api data |  {{BASE_URL}}}}/api/locations/{{city}}/?days={{days}} |
