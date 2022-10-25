@@ -45,6 +45,18 @@ given city and period of time.
     source venv/bin/activate
     ```
 
+- Create a .env file on the root directory
+    ```
+     touch .env
+    ```
+
+- Add the following keys in your .env file
+    ```
+    SECRET_KEY='stz-6*!-!vri1n$@hmx1h_n=o^gj$aj=mzzov@vc&6#(!=v6s9'
+    API_KEY='0873153d0367435db6a113510221010'
+    ```
+
+
 -   Install the dependencies:
 
     ```
